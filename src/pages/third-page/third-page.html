@@ -1,0 +1,65 @@
+<!--
+  Generated template for the ThirdPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>thirdPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="myForm" novalidate>
+  <ion-list> 
+    <ion-item>
+      <ion-label stacked>Nombre:</ion-label>
+      <ion-input formControlName="name" type="text" placeholder="name" [(ngModel)]="data.name"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('name').errors && myForm.get('name').dirty">
+      <p *ngIf="myForm.get('name').hasError('required')">El nombre es requerdo</p>
+    </ion-item>
+
+     <ion-item>
+      <ion-label stacked>Apellido paterno:</ion-label>
+      <ion-input formControlName="father" type="text" placeholder="Apellido paterno" [(ngModel)]="data.father"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('father').errors && myForm.get('father').dirty">
+      <p *ngIf="myForm.get('father').hasError('required')">El apellido paterno es requerido</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Apellido materno:</ion-label>
+      <ion-input formControlName="mother" type="text" placeholder="Apellido materno" [(ngModel)]="data.mother"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('mother').errors && myForm.get('mother').dirty">
+      <p *ngIf="myForm.get('mother').hasError('required')">El apellido materno es requerido</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Fecba de nacimiento:</ion-label>
+      <ion-input formControlName="date" type="text" placeholder="Fecha de nacimiento" [(ngModel)]="data.date"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('date').errors && myForm.get('date').dirty">
+      <p *ngIf="myForm.get('date').hasError('required')">La fecha de nacimiento es requerida</p>
+      <p *ngIf="myForm.get('date').hasError('pattern')">Formato: AAAA/MM/dd</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>RFC:</ion-label>
+      <ion-input disabled="true" formControlName="rfc" type="text" [(ngModel)]="data.rfc"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="myForm.get('rfc').errors && myForm.get('rfc').dirty">
+     
+    </ion-item>
+
+  </ion-list>
+  <div padding>
+    <button ion-button block [disabled]="myForm.invalid" (click)="update()">Generar RFC</button>
+  </div>
+</form>
+</ion-content>
